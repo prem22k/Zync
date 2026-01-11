@@ -191,9 +191,9 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="h-screen bg-background flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="border-b bg-card px-6 py-4">
+      <header className="border-b bg-card px-6 py-4 flex-none">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={() => navigate("/dashboard")}>
             <ArrowLeft className="h-5 w-5" />
@@ -210,9 +210,9 @@ const ProjectDetails = () => {
         </div>
       </header>
 
-      <main className="flex-1 p-6 overflow-hidden">
-        <Tabs defaultValue="architecture" className="h-full flex flex-col">
-          <TabsList className="w-full justify-start border-b rounded-none bg-transparent p-0 mb-6">
+      <main className="flex-1 flex flex-col p-6 overflow-hidden min-h-0">
+        <Tabs defaultValue="architecture" className="flex-1 flex flex-col min-h-0">
+          <TabsList className="w-full justify-start border-b rounded-none bg-transparent p-0 mb-6 flex-none">
             <TabsTrigger value="architecture" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-6 pb-2">
               Architecture
             </TabsTrigger>
@@ -227,8 +227,8 @@ const ProjectDetails = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="architecture" className="flex-1 overflow-auto">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <TabsContent value="architecture" className="flex-1 overflow-y-auto min-h-0 pr-2">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 pb-6">
               {/* High Level */}
               <Card className="col-span-full">
                 <CardHeader>
@@ -339,7 +339,7 @@ const ProjectDetails = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="board" className="flex-1 overflow-auto h-full p-4">
+          <TabsContent value="board" className="flex-1 overflow-hidden min-h-0 p-4">
              <KanbanBoard 
                 steps={project.steps} 
                 onUpdateTask={handleTaskUpdate} 
@@ -347,8 +347,8 @@ const ProjectDetails = () => {
              />
           </TabsContent>
 
-          <TabsContent value="steps" className="flex-1 overflow-auto">
-             <Card className="h-full">
+          <TabsContent value="steps" className="flex-1 overflow-y-auto min-h-0">
+             <Card>
                  <CardHeader>
                      <CardTitle>Development Plan</CardTitle>
                      <CardDescription>Step-by-step implementation guide</CardDescription>
